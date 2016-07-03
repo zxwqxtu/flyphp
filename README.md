@@ -42,7 +42,7 @@ $this->theme = 'new',则表示layout/new/index.php
     }
 
 ## 命令行 ##
-php flyPHP/index.php {项目名} {controller} {action} {param1} {param2}...
+php web/index.php {controller} {action} {param1} {param2}...
 
 ## 规范 ##
 - 每个action不能有exit，die等中途退出，必须用return 返回值。
@@ -54,21 +54,6 @@ php flyPHP/index.php {项目名} {controller} {action} {param1} {param2}...
     
 - js，css另起一个域名，js.xxx.com, 这样加载js，css就不会带cookie等头部信息，节省宽带。
     
-## 配置文件 ##
-1. 框架配置文件： 框架根目录下config
-1. app配置文件： app项目下config
-1. app公用配置文件： 根目录config
-
-## 例子 ##
-[https://github.com/zxwqxtu/flyPhp-example](https://github.com/zxwqxtu/flyPhp-example "https://github.com/zxwqxtu/flyPhp-example")
-
-## 项目结构 ##
-1. app 新建项目
-1. config 所有项目公用配置文件目录
-1. flyPHP framework框架
-1. logs 日志目录
-1. public 前端js，css文件
-
 ## url rewrite配置 ##
 配置文件config/route.php
 
@@ -77,4 +62,4 @@ php flyPHP/index.php {项目名} {controller} {action} {param1} {param2}...
         );
 
 ## 推荐安装方式 ##
-composer create-project zxwqxtu/flyphp framework dev-master
+composer create-project zxwqxtu/flyphp2 project dev-master
