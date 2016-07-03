@@ -1,0 +1,33 @@
+{
+    "name": "zxwqxtu/flyphp",
+    "description": "php framework easy simple",
+    "keywords": ["flyPHP", "php", "framework"],
+    "homepage": "https://github.com/zxwqxtu/flyPHP",
+    "type": "project",
+    "require": {
+        "php": ">=5.4.0",
+        "zxwqxtu/phpdb": "dev-master",
+        "zxwqxtu/flyphp-src": "dev-master"
+    },
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/zxwqxtu/flyphp-src.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/zxwqxtu/phpdb.git"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "wangqiang",
+            "email": "960875184@qq.com"
+        }
+    ]
+} 

@@ -1,0 +1,12 @@
+<?php
+/**
+ * 配置文件
+ *
+ */
+return [
+    'timezone' => 'Asia/Shanghai',
+    'debug' => true,
+    'errorLog' => '',
+    'charset' => 'UTF-8',
+    'indexController' => 'Test',
+];
