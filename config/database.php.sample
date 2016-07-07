@@ -3,38 +3,33 @@
  * 数据库配置文件
  *
  */
-return array(
-    'mongodb' => array(
-        'default' => array(
-            'server' => 'mongodb://10.100.2.77:27017', 
-            'options' => array(),
-            'dbName' => 'hntvads'
-        ),
-        'default2' => array(
-            "server" => 'mongodb://10.100.2.33:27017,10.100.2.15:27017,10.100.2.6:27017',
-            'options' => array(
-                'replicaSet' => 'ipddb',
-                'readPreference' => \MongoClient::RP_PRIMARY_PREFERRED,
-            ),
-            'dbName' => 'hntvads'
-        )       
-    ),
-
-    'mysql' => array(
-        'default' => array(
-            'host' => '127.0.0.1',
-            'user' => '',
+return [
+    'mysql' => [
+        'default' => [
+            'host' => '192.168.137.1',
+            'port' => 3306,
+            'user' => 'root',
             'pass' => '',
             'dbName' => 'test',
-            'attributes' => array(),
-        ),
-        'default2' => array(
-            'host' => '127.0.0.1',
-            'user' => '',
-            'pass' => '',
-            'dbName' => 'test2',
-            'attributes' => array(),
-        ),
-    )
-   
-);
+            'attributes' => [
+                \PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'
+            ]
+        ]
+    ],
+    'mongodb' => [
+        'default' => [
+            'server' => 'mongodb://192.168.137.1:27017', 
+            'options' => [],
+            'dbName' => 'hntvads'
+        ],
+        'product' => [
+            "server" => 'mongodb://192.168.137.1:27017,192.168.137.3:27017,192.168.137.2:27017',
+            'options' => [
+                'replicaSet' => 'ipddb',
+                'readPreference' => \MongoClient::RP_PRIMARY_PREFERRED,
+            ],
+            'dbName' => 'hntvads'
+        ]
+    ]
+];
+

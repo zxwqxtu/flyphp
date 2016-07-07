@@ -3,7 +3,7 @@
  * 路由器配置文件
  *
  */
-return array(
+return [
     'test/main' => 'test/index'
-);
+];
 
