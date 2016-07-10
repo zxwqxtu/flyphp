@@ -1,50 +1,31 @@
-## 界面输出字符编码 ##
-config.php设置charset=UTF-8
+## 安装 ##
+### 推荐方式 ###
+composer create-project zxwqxtu/flyphp2 {project} dev-master
 
-# 控制器 #
-## 模板 ##
+## 配置 ##
+### config.php ###
+### database.php ###
+    支持mysql,pgsql等关系型数据库（pdo), mongodb
+### route.php ###
+    支持自定义url rewrite
+    return [
+        '/blog' => 'test/index/blog' //用/blog 代替test/index/blog访问
+    ];
+
+## 控制器 ##
+### 模板 ###
 $this->view='test/index',则表示views/test/index.php
 
-## layout布局 ##
+### layout布局 ###
 $this->layout='index',则表示layout/index.php
 
-## theme主题 ##
+### theme主题 ###
 $this->theme = 'new',则表示layout/new/index.php
 
-## 例子 ##
-    <?php
-    namespace App\Controllers;
-    
-    use FlyPhp\Controllers\Base;
-    
-    class Test extends Base
-    {
-        protected function init()
-        {
-            parent::init();
-    
-            $this->layout = 'index';
-        }
-    
-        public function index()
-        {
-            return 'Hello, World!';
-        }
-    
-        public function show()
-        {
-            $this->view = 'Test/show';
-    
-            return array(
-                'data' => 'show me', 
-            );
-        }
-    }
-
-## 命令行 ##
+### 命令行 ###
 php web/index.php {controller} {action} {param1} {param2}...
 
-## 规范 ##
+### 规范 ###
 - 每个action不能有exit，die等中途退出，必须用return 返回值。
 
     
@@ -52,14 +33,49 @@ php web/index.php {controller} {action} {param1} {param2}...
        
     1.  命令行访问， 返回值如果是对象数组，就json输出，否则直接echo,命令行不会执行view层 
     
-- js，css另起一个域名，js.xxx.com, 这样加载js，css就不会带cookie等头部信息，节省宽带。
-    
-## url rewrite配置 ##
-配置文件config/route.php
+## Model层 ##
+### 属性值 ###
+   protected $dbType = 'mysql';
+   
+   protected $dbSelect= 'default';
+   
+   protected $table = '';
+   
+   protected $collection = '';
+   
+### 方法 ###
+find($id)
 
-        return array(
-            'test/main/kkkk' => 'test/index' //用test/main/kkkk 代替 test/index访问
-        );
+findAll()
 
-## 推荐安装方式 ##
-composer create-project zxwqxtu/flyphp2 project dev-master
+findBy($where)
+
+findOneBy($where)
+
+#### $where格式 ####
+**pdo** [['id', 13], ['status', [0,1]], ['date', '20150503', '>']]
+**mongodb** 原始格式
+
+
+----------
+
+
+## nginx配置 ##
+	server {
+		listen       9090;
+		root          /www/web/flyPhp2/web;
+		index index.php;
+
+		location / {
+			# try to serve file directly, fallback to app.php
+			try_files $uri /index.php$uri;
+		}
+
+		location ~ \.php {
+			fastcgi_pass   unix:/tmp/php-cgi.sock;
+			fastcgi_param  SCRIPT_FILENAME  $realpath_root$fastcgi_script_name;
+			include        fastcgi_params;
+		}
+		error_log logs/flyphp2.error.log;
+		access_log logs/flyphp2.access.log;
+	}

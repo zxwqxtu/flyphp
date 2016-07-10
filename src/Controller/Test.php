@@ -65,5 +65,29 @@ class Test extends Base
         header("Location: /user/login");
         return true;
     }
+
+    public function mysql()
+    {
+        $id = time();
+        $ret = \App\Model\Test::getInstance()->insert(['id'=>$id, 'money' => 1.0]);
+        $ret = \App\Model\Test::getInstance()->update(['money'=>3], [['id', $id]]);
+        $ret = \App\Model\Test::getInstance()->findAll();
+        $ret = \App\Model\Test::getInstance()->find($id);
+        $ret = \App\Model\Test::getInstance()->findBy([['money', '2.0']]);
+        $ret = \App\Model\Test::getInstance()->findOneBy([['money', '2.0']]);
+        return var_dump($ret);
+    }
+
+    public function mongodb()
+    {
+        $id = time();
+        $ret = \App\Model\User::getInstance()->insert(['id'=>$id, 'money' => 1.0]);
+        $ret = \App\Model\User::getInstance()->find($id);
+        $ret = \App\Model\User::getInstance()->findAll()->count();
+        $ret = \App\Model\User::getInstance()->findOneBy(['money' => 1.0]);
+        $ret = \App\Model\User::getInstance()->findBy(['money' => 1.0])->count();
+        return var_dump($ret);
+    }
+
 }
 
