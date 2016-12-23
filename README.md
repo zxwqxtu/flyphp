@@ -9,7 +9,7 @@ composer create-project zxwqxtu/flyphp2 {project} dev-master
 ### route.php ###
     支持自定义url rewrite
     return [
-        '/blog' => 'test/index/blog' //用/blog 代替test/index/blog访问
+        '/blog' => '/test/index/blog' //用/blog 代替test/index/blog访问
     ];
 
 ## 控制器 ##
@@ -68,7 +68,7 @@ findOneBy($where)
 
 		location / {
 			# try to serve file directly, fallback to app.php
-			try_files $uri /index.php$uri;
+			try_files $uri /index.php$request_uri;
 		}
 
 		location ~ \.php {
