@@ -4,6 +4,6 @@
  *
  */
 return [
-    'test/main' => 'test/index'
+    '/main' => '/test/index'
 ];
 
