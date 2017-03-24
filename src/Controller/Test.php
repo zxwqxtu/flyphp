@@ -12,7 +12,7 @@ class Test extends Base
     protected $defaultAction = 'index';
     protected $layout = 'index';
 
-    public function index()
+    public function indexAction()
     {
         $this->headers = [
             'content-type' => 'xml', 

@@ -7,7 +7,7 @@
     "require": {
         "php": ">=5.4.0",
         "zxwqxtu/phpdb": "2.0.0",
-        "zxwqxtu/flyphp-src": "1.3.3"
+        "zxwqxtu/flyphp-src": "1.4.0"
     },
     "repositories": [
         {

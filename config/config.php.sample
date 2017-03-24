@@ -7,6 +7,7 @@ return [
     'timezone' => 'Asia/Shanghai',
     'debug' => true,
     'errorLog' => '',
+    'cachePath' => '/tmp',
     'charset' => 'UTF-8',
     'indexController' => 'Test',
 ];
