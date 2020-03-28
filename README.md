@@ -1,6 +1,6 @@
 ## 安装 ##
 ### 推荐方式 ###
-composer create-project zxwqxtu/flyphp2 {project} dev-master
+composer create-project zxwqxtu/flyphp {project} dev-master
 
 ## 配置 ##
 ### config.php ###

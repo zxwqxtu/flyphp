@@ -24,7 +24,7 @@ class Test extends Base
      * @desc 登陆
      *
      */
-    public function login()
+    public function loginAction()
     {
         if (!empty($this->request->session('name', 'string'))) {
             header("Location: /");
@@ -36,7 +36,7 @@ class Test extends Base
         return true;
     }
 
-    public function submit()
+    public function submitAction()
     {
         $name = $this->request->post('name', 'string');
         $pass = $this->request->post('password', 'string');
@@ -58,7 +58,7 @@ class Test extends Base
         return ['status' => 0];
     }
 
-    public function logout()
+    public function logoutAction()
     {
         session_start();
         session_destroy();
@@ -66,7 +66,7 @@ class Test extends Base
         return true;
     }
 
-    public function mysql()
+    public function mysqlAction()
     {
         $id = time();
         $ret = \App\Model\Test::getInstance()->insert(['id'=>$id, 'money' => 1.0]);
@@ -78,7 +78,7 @@ class Test extends Base
         return var_dump($ret);
     }
 
-    public function mongodb()
+    public function mongodbAction()
     {
         $id = time();
         $ret = \App\Model\User::getInstance()->insert(['id'=>$id, 'money' => 1.0]);

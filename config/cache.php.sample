@@ -1,0 +1,14 @@
+<?php
+/**
+ * 缓存配置文件
+ *
+ */
+return [
+    'App\\Controller\\Main::indexAction' => 3600, //单位是秒   
+    'App\\Controller\\Main::hotAction' => 3600, 
+    'App\\Controller\\Item::infoAction' => 3600, 
+    'App\\Controller\\Item::playAction' => 3600, 
+    'App\\Controller\\Cate::indexAction' => 3600, 
+    'App\\Controller\\Search::indexAction' => 3600, 
+];
+
